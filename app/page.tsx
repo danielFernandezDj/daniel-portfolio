@@ -181,7 +181,7 @@ export default function Page() {
             Featured Projects
           </h2>
           <Link
-            href="#"
+            href="/projects"
             className="inline-flex items-center gap-2 text-[0.98rem] font-medium text-cyan-400 transition-colors hover:text-cyan-300"
           >
             View all projects
