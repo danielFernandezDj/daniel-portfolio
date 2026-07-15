@@ -8,16 +8,16 @@ const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Skills", href: "/skills" },
+  { label: "Experience", href: "/experience" },
+  { label: "Contact", href: "/contact" },
 ]
 
 function PortfolioShell({
   active,
   children,
 }: {
-  active: "Home" | "About" | "Projects"
+  active: "Home" | "About" | "Projects" | "Skills" | "Experience" | "Contact"
   children: React.ReactNode
 }) {
   return (

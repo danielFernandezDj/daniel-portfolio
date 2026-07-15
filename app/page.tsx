@@ -171,6 +171,13 @@ export default function Page() {
                 </div>
               ))}
             </div>
+            <Link
+              href="/skills"
+              className="inline-flex items-center gap-2 text-[0.95rem] font-medium text-cyan-400 transition-colors hover:text-cyan-300 lg:ml-auto"
+            >
+              View skills
+              <MoveRight className="size-4" />
+            </Link>
           </div>
         </div>
       </section>
