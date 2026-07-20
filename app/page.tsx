@@ -1,345 +1,363 @@
+import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowRight,
-  BriefcaseBusiness,
-  Code2,
-  ExternalLink,
-  Globe,
-  GraduationCap,
-  Lightbulb,
-  Mail,
-  MapPin,
-  MessageCircle,
-  MoveRight,
-  PanelsTopLeft,
-  UserRound,
-} from "lucide-react"
+import { ArrowRight, Box, Code2, SquareTerminal } from "lucide-react"
 
-import { AbstractPortrait, PortfolioShell } from "@/components/portfolio-shell"
-import { Button } from "@/components/ui/button"
+import { ProjectCard } from "@/components/home/project-card"
+import { SectionReveal } from "@/components/home/section-reveal"
+import { SiteHeader } from "@/components/home/site-header"
 
-const strengths = [
+const buildColumns = [
   {
     icon: Code2,
-    title: "Full-Stack Developer",
-    body: "Python, TypeScript, Next.js",
+    title: "AI Products",
+    description: "Intelligent tools that help people learn, think, and create.",
   },
   {
-    icon: Lightbulb,
-    title: "Problem Solver",
-    body: "I turn ideas into functional and scalable solutions.",
+    icon: Box,
+    title: "Business Software",
+    description: "Web applications that automate workflows and drive results.",
   },
   {
-    icon: GraduationCap,
-    title: "Continuous Learner",
-    body: "Always exploring new tools and improving my craft.",
-  },
-  {
-    icon: Globe,
-    title: "Based in Texas, USA",
-    body: "Open to remote opportunities worldwide.",
+    icon: SquareTerminal,
+    title: "Internal Tools",
+    description: "Systems and utilities that improve operations and save time.",
   },
 ]
 
-const techStack = [
-  "TypeScript",
-  "Next.js",
-  "Python",
-  "PostgreSQL",
-  "Tailwind CSS",
-  "Supabase",
-  "Docker",
-  "Git",
-]
-
-const projects = [
+const selectedWork = [
   {
     title: "Akasha Seed",
     description:
-      "AI-powered workspace for capturing ideas, notes, and insights. Built with Next.js, Supabase, and Tailwind CSS.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    accent: "from-cyan-500/25 via-emerald-400/10 to-transparent",
+      "AI workspace that helps you capture ideas, notes, and insights. Built with Next.js, Supabase, and Tailwind CSS.",
+    stack: ["Next.js", "Supabase", "TypeScript"],
+    imageSrc: "/images/project-akasha.png",
+    imageAlt: "Akasha Seed project preview",
+    projectHref: "https://github.com/danfernandezdev",
+    githubHref: "https://github.com/danfernandezdev",
   },
   {
     title: "Finance Calculator",
     description:
       "Financial calculator for vehicle payments with trade-in logic, interest rates, and amortization schedules.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    accent: "from-slate-400/20 via-cyan-400/10 to-transparent",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    imageSrc: "/images/project-finance.png",
+    imageAlt: "Finance Calculator project preview",
+    projectHref: "https://github.com/danfernandezdev",
+    githubHref: "https://github.com/danfernandezdev",
   },
   {
     title: "Water Business CRM",
     description:
-      "CRM system for managing customers, appointments, and subscriptions for a water treatment business.",
-    tags: ["Next.js", "Supabase", "Tailwind CSS"],
-    accent: "from-emerald-400/20 via-cyan-500/10 to-transparent",
+      "CRM system for managing customers, appointments, subscriptions, and service visits for a water treatment business.",
+    stack: ["Next.js", "Supabase", "PostgreSQL"],
+    imageSrc: "/images/project-water.png",
+    imageAlt: "Water Business CRM project preview",
+    projectHref: "https://github.com/danfernandezdev",
+    githubHref: "https://github.com/danfernandezdev",
   },
 ]
 
-const motivations = [
-  "Solving meaningful problems",
-  "Building with purpose and impact",
-  "Creating clean and maintainable code",
-  "Learning and sharing knowledge",
+const techStack = [
+  "Python",
+  "TypeScript",
+  "Next.js",
+  "React",
+  "PostgreSQL",
+  "Supabase",
+  "Tailwind CSS",
+  "Docker",
+  "Git",
 ]
 
-export default function Page() {
+const experience = [
+  {
+    period: "Dec 2024 – Present",
+    title: "Independent Software Engineer",
+    company: "TG Water Systems",
+    description:
+      "Lead in-home water test software, customer workflow tools, and tailored operational solutions for a local service business.",
+  },
+  {
+    period: "May 2023 – Dec 2024",
+    title: "Sales Consultant",
+    company: "Lithia Toyota Odessa",
+    description:
+      "Built relationships, generated leads, and delivered a high standard of client communication and follow-through.",
+  },
+  {
+    period: "2022 – 2023",
+    title: "Sales Specialist",
+    company: "Lowe's Home Improvement",
+    description:
+      "Assisted customers with product planning and solutions while maintaining strong product knowledge across departments.",
+  },
+  {
+    period: "2019 – 2022",
+    title: "Associate",
+    company: "Walmart",
+    description:
+      "Delivered customer service, maintained store standards, and supported reliable day-to-day operations.",
+  },
+]
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Daniel Fernandez",
+  jobTitle: "Full-Stack Developer",
+  email: "mailto:daniel.fernandez.dev@gmail.com",
+  url: "https://danielfernandez.dev",
+  sameAs: [
+    "https://github.com/danfernandezdev",
+    "https://www.linkedin.com/in/daniel-fernandez-tech",
+  ],
+  knowsAbout: [
+    "Python",
+    "TypeScript",
+    "Next.js",
+    "PostgreSQL",
+    "React",
+    "Supabase",
+  ],
+}
+
+export default function HomePage() {
   return (
-    <PortfolioShell active="Home">
-      <section
-        id="home"
-        className="grid gap-8 border-b border-white/8 py-8 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:py-10"
-      >
-        <div className="max-w-[510px] pt-2 sm:pt-5 lg:pt-9">
-          <p className="mb-5 text-[1.55rem] font-semibold text-cyan-400 sm:mb-6 sm:text-[2rem]">
-            Hello, I&apos;m Daniel 👋
-          </p>
-          <h1 className="max-w-[14ch] text-[2.7rem] leading-[0.96] font-bold tracking-[-0.05em] text-white sm:text-[3.6rem] lg:text-[4.35rem]">
-            I build scalable web applications that solve{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              real problems.
-            </span>
-          </h1>
-          <p className="mt-6 max-w-[32rem] text-base leading-8 text-white/74 sm:mt-7 sm:text-[1.02rem]">
-            Full-Stack Developer with a passion for clean code, great user
-            experiences, and building solutions that make an impact.
-          </p>
+    <main id="top" className="min-h-screen bg-white text-black">
+      <SiteHeader />
 
-          <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
-            <Button className="h-11 w-full rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 px-6 text-[0.96rem] font-semibold text-[#031016] hover:opacity-92 sm:h-12 sm:w-auto sm:px-7">
-              View My Work
-              <ArrowRight className="size-4" />
-            </Button>
-            <Button
-              variant="outline"
-              className="h-11 w-full rounded-xl border-white/14 bg-white/3 px-6 text-[0.96rem] text-white hover:bg-white/8 sm:h-12 sm:w-auto sm:px-7"
-            >
-              Get In Touch
-              <MessageCircle className="size-4" />
-            </Button>
-          </div>
+      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
 
-          <div className="mt-7 flex items-center gap-5 text-white/88">
-            <Link href="#" className="transition-colors hover:text-cyan-300">
-              <PanelsTopLeft className="size-5" />
-            </Link>
-            <Link href="#" className="transition-colors hover:text-cyan-300">
-              <UserRound className="size-5" />
-            </Link>
-            <Link href="#" className="transition-colors hover:text-cyan-300">
-              <Mail className="size-5" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="relative">
-          <AbstractPortrait className="min-h-[300px] sm:min-h-[420px]" />
-
-          <div className="relative mt-4 w-full rounded-2xl border border-white/10 bg-[#0b1118]/95 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur sm:p-6 lg:absolute lg:top-10 lg:right-0 lg:mt-0 lg:max-w-[290px] lg:p-7">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 lg:gap-7">
-              {strengths.map(({ icon: Icon, title, body }) => (
-                <div key={title} className="grid grid-cols-[30px_1fr] gap-4">
-                  <Icon className="mt-1 size-5 text-cyan-400" />
-                  <div>
-                    <h2 className="text-[1.02rem] font-medium text-white">
-                      {title}
-                    </h2>
-                    <p className="mt-1 text-[0.95rem] leading-7 text-white/64">
-                      {body}
-                    </p>
-                  </div>
-                </div>
-              ))}
+        <section className="grid min-h-[calc(100vh-88px)] items-end gap-12 border-b border-neutral-200 py-12 md:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div className="pb-6 lg:pb-12">
+            <div className="text-[0.95rem] font-medium tracking-[0.04em] text-neutral-500 uppercase">
+              Full-stack developer
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" className="mt-4 sm:-mt-3 lg:-mt-5">
-        <div className="rounded-2xl border border-white/10 bg-[#0c1219]/95 px-4 py-5 shadow-[0_10px_30px_rgba(0,0,0,0.24)] backdrop-blur sm:px-5">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center">
-            <div className="min-w-[112px] text-lg font-semibold">
-              Tech Stack
+            <div className="mt-10 space-y-8">
+              <HeroCopy />
+              <HeroParagraph />
+              <HeroButtons />
             </div>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-4 text-sm text-white/84 sm:gap-x-8 sm:text-[1rem]">
-              {techStack.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="flex size-7 items-center justify-center rounded-md bg-white/7 text-[0.82rem] font-semibold text-cyan-300">
-                    {item.slice(0, 2)}
-                  </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4 text-[1rem] text-neutral-700 md:gap-6">
+              {techStack.slice(0, 4).map((item, index) => (
+                <span key={item} className="inline-flex items-center gap-4 md:gap-6">
                   <span>{item}</span>
-                </div>
+                  {index < 3 ? <span className="text-neutral-300">•</span> : null}
+                </span>
               ))}
             </div>
-            <Link
-              href="/skills"
-              className="inline-flex items-center gap-2 text-[0.95rem] font-medium text-cyan-400 transition-colors hover:text-cyan-300 lg:ml-auto"
-            >
-              View skills
-              <MoveRight className="size-4" />
-            </Link>
           </div>
-        </div>
-      </section>
 
-      <section id="projects" className="py-8">
-        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-          <h2 className="text-[1.8rem] font-semibold tracking-tight sm:text-[2rem]">
-            Featured Projects
-          </h2>
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-[0.98rem] font-medium text-cyan-400 transition-colors hover:text-cyan-300"
-          >
-            View all projects
-            <MoveRight className="size-4" />
-          </Link>
-        </div>
+          <HeroPortrait />
+        </section>
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <article
-              key={project.title}
-              className="rounded-2xl border border-white/10 bg-[#0c1219]/94 p-4 shadow-[0_14px_30px_rgba(0,0,0,0.22)] sm:p-5"
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div
-                  className={`relative h-[148px] w-full overflow-hidden rounded-xl border border-white/7 bg-[#091018] sm:w-[126px] sm:shrink-0 ${index === 1 ? "hidden sm:block" : ""}`}
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.accent}`}
-                  />
-                  <div className="absolute inset-x-3 top-4 h-3 rounded-full bg-white/10" />
-                  <div className="absolute inset-x-4 top-10 grid grid-cols-3 gap-2">
-                    {Array.from({ length: 9 }).map((_, gridIndex) => (
-                      <div
-                        key={gridIndex}
-                        className="aspect-square rounded-md bg-white/8"
-                      />
-                    ))}
-                  </div>
-                  <div className="absolute inset-x-4 bottom-4 h-6 rounded-md bg-cyan-400/24" />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[1.35rem] font-medium tracking-tight text-white sm:text-[1.55rem]">
-                      {project.title}
-                    </h3>
-                    <ExternalLink className="mt-1 size-5 shrink-0 text-white/70" />
-                  </div>
-                  <p className="mt-3 text-[0.96rem] leading-7 text-white/66">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-white/8 bg-white/5 px-2.5 py-1 text-[0.78rem] text-white/72"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <footer
-        id="contact"
-        className="grid gap-8 border-t border-white/8 py-7 text-white/72 lg:grid-cols-4 lg:gap-10"
-      >
-        <div>
-          <h2 className="text-[1.45rem] font-semibold text-white sm:text-[1.65rem]">
-            About Me
-          </h2>
-          <p className="mt-4 text-sm leading-8 sm:text-[0.98rem]">
-            I&apos;m a developer who enjoys building practical, user-focused
-            applications. I care about performance, clean code, and continuous
-            improvement.
-          </p>
-          <Link
-            href="/about"
-            className="mt-6 inline-flex items-center gap-2 text-[1rem] font-medium text-cyan-400 hover:text-cyan-300"
-          >
-            Learn more about me
-            <MoveRight className="size-4" />
-          </Link>
-        </div>
-
-        <div id="experience">
-          <h2 className="text-[1.45rem] font-semibold text-white sm:text-[1.65rem]">
-            What Drives Me
-          </h2>
-          <div className="mt-4 space-y-4">
-            {motivations.map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <div className="mt-1 size-2 rounded-full bg-cyan-400" />
-                <p className="text-sm sm:text-[0.98rem]">{item}</p>
-              </div>
+        <SectionReveal className="border-b border-neutral-200 py-12 md:py-16">
+          <div className="text-[0.9rem] font-medium tracking-[0.04em] text-neutral-500 uppercase">
+            What I Build
+          </div>
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-10">
+            {buildColumns.map(({ icon: Icon, title, description }) => (
+              <article
+                key={title}
+                className="border-l border-neutral-200 pl-6 first:border-l-0 first:pl-0 md:pl-8"
+              >
+                <Icon className="size-6 text-black" />
+                <h2 className="mt-6 text-[2rem] font-semibold tracking-[-0.04em]">
+                  {title}
+                </h2>
+                <p className="mt-4 max-w-[24ch] text-[1.02rem] leading-8 text-neutral-600">
+                  {description}
+                </p>
+              </article>
             ))}
           </div>
-        </div>
+        </SectionReveal>
 
-        <div>
-          <h2 className="text-[1.45rem] font-semibold text-white sm:text-[1.65rem]">
-            Testimonials
-          </h2>
-          <div className="mt-4 rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-            <div className="text-4xl leading-none text-white/28">“</div>
-            <p className="mt-2 text-sm leading-7 sm:text-[0.98rem]">
-              Daniel is a proactive developer who delivers high-quality work and
-              communicates clearly. A great teammate and problem solver.
-            </p>
-            <div className="mt-5 flex items-center gap-3">
-              <div className="flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-emerald-400 text-sm font-bold text-[#041016]">
-                EG
-              </div>
-              <div>
-                <div className="font-semibold text-white">Esteban G.</div>
-                <div className="text-sm text-white/58">
-                  CEO at TG Water Systems
+        <SectionReveal id="selected-work" className="border-b border-neutral-200 py-12 md:py-16">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="text-[0.9rem] font-medium tracking-[0.04em] text-neutral-500 uppercase">
+              Selected Work
+            </div>
+            <Link
+              href="#contact"
+              className="group inline-flex items-center gap-2 text-[1rem] font-medium text-black"
+            >
+              View all projects
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1.5" />
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {selectedWork.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        </SectionReveal>
+
+        <SectionReveal className="border-b border-neutral-200 py-12 md:py-16">
+          <div className="text-[0.9rem] font-medium tracking-[0.04em] text-neutral-500 uppercase">
+            Tech Stack
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4 text-[1.35rem] tracking-[-0.03em] md:text-[1.6rem]">
+            {techStack.map((item, index) => (
+              <span key={item} className="inline-flex items-center gap-6">
+                <span>{item}</span>
+                {index < techStack.length - 1 ? (
+                  <span className="text-neutral-300">•</span>
+                ) : null}
+              </span>
+            ))}
+          </div>
+        </SectionReveal>
+
+        <SectionReveal id="experience" className="border-b border-neutral-200 py-12 md:py-16">
+          <div className="text-[0.9rem] font-medium tracking-[0.04em] text-neutral-500 uppercase">
+            Experience
+          </div>
+
+          <div className="mt-10 grid gap-10 md:grid-cols-[170px_1px_1fr] md:gap-x-10">
+            <div className="hidden md:block" />
+            <div className="hidden bg-neutral-200 md:block" />
+            <div className="space-y-12">
+              {experience.map((item) => (
+                <div key={`${item.company}-${item.period}`} className="grid gap-6 md:grid-cols-[170px_1px_1fr] md:gap-x-10">
+                  <div className="text-[0.98rem] text-neutral-600">{item.period}</div>
+                  <div className="relative hidden md:block">
+                    <div className="absolute left-1/2 top-2 size-3 -translate-x-1/2 rounded-full bg-black" />
+                  </div>
+                  <article>
+                    <h3 className="text-[1.8rem] font-semibold tracking-[-0.04em]">{item.title}</h3>
+                    <p className="mt-1 text-[1.12rem] text-neutral-700">{item.company}</p>
+                    <p className="mt-3 max-w-[60ch] text-[1rem] leading-8 text-neutral-600">
+                      {item.description}
+                    </p>
+                  </article>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        <div>
-          <h2 className="text-[1.45rem] font-semibold text-white sm:text-[1.65rem]">
-            Let&apos;s Connect
-          </h2>
-          <p className="mt-4 text-sm leading-8 sm:text-[0.98rem]">
-            I&apos;m always open to discussing new projects and opportunities.
-          </p>
-          <div className="mt-5 space-y-4">
-            <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 size-5 shrink-0 text-cyan-400" />
-              <span className="text-sm break-all sm:text-[0.98rem] sm:break-normal">
-                daniel.fernandez.dev@gmail.com
-              </span>
-            </div>
-            <div className="flex items-start gap-3">
-              <MapPin className="mt-0.5 size-5 shrink-0 text-cyan-400" />
-              <span className="text-sm sm:text-[0.98rem]">
-                Odessa / Midland, Texas, USA
-              </span>
-            </div>
+          <div className="mt-10">
+            <Link
+              href="mailto:daniel.fernandez.dev@gmail.com?subject=Full%20Experience"
+              className="group inline-flex items-center gap-2 text-[1rem] font-medium text-black"
+            >
+              View full experience
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1.5" />
+            </Link>
           </div>
-        </div>
+        </SectionReveal>
 
-        <div className="col-span-full flex flex-col gap-4 border-t border-white/8 pt-5 text-sm text-white/44 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; 2026 Daniel Fern&aacute;ndez. All rights reserved.</p>
-          <div className="flex items-center gap-2">
-            <BriefcaseBusiness className="size-4" />
-            <span>Built with Next.js &amp; Tailwind CSS</span>
+        <SectionReveal id="contact" className="py-12 md:py-16">
+          <div className="flex flex-col gap-10 border-b border-neutral-200 pb-12 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="max-w-[10ch] text-[3rem] leading-[0.96] font-semibold tracking-[-0.06em] md:text-[4rem]">
+                Let&apos;s build something great together.
+              </h2>
+              <p className="mt-6 max-w-[34rem] text-[1.05rem] leading-8 text-neutral-600">
+                I&apos;m always open to discussing new projects and opportunities.
+              </p>
+            </div>
+
+            <Link
+              href="mailto:daniel.fernandez.dev@gmail.com?subject=Let%27s%20connect"
+              className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-black px-6 py-4 text-[1rem] font-medium text-white transition-colors hover:bg-neutral-800"
+            >
+              Let&apos;s connect
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
           </div>
-        </div>
-      </footer>
-    </PortfolioShell>
+
+          <footer className="flex flex-col gap-6 py-8 text-sm text-neutral-600 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p>&copy; 2026 Daniel Fern&aacute;ndez. All rights reserved.</p>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <Link href="https://github.com/danfernandezdev" className="footer-link">
+                GitHub
+              </Link>
+              <Link href="https://www.linkedin.com/in/daniel-fernandez-tech" className="footer-link">
+                LinkedIn
+              </Link>
+              <Link href="mailto:daniel.fernandez.dev@gmail.com" className="footer-link">
+                Email
+              </Link>
+              <Link href="mailto:daniel.fernandez.dev@gmail.com?subject=Resume%20Request" className="footer-link">
+                Resume
+              </Link>
+            </div>
+          </footer>
+        </SectionReveal>
+      </div>
+    </main>
+  )
+}
+
+function HeroCopy() {
+  return (
+    <SectionReveal className="!opacity-100 !translate-y-0" delay={0}>
+      <h1 className="max-w-[8ch] text-[4rem] leading-[0.92] font-semibold tracking-[-0.08em] md:text-[5.8rem] lg:text-[6.4rem]">
+        Building software that solves real problems.
+      </h1>
+    </SectionReveal>
+  )
+}
+
+function HeroParagraph() {
+  return (
+    <SectionReveal className="!opacity-100 !translate-y-0" delay={0.12}>
+      <p className="max-w-[26ch] text-[1.15rem] leading-9 text-neutral-600 md:text-[1.2rem]">
+        I build scalable web applications with clean code and great user experiences.
+      </p>
+    </SectionReveal>
+  )
+}
+
+function HeroButtons() {
+  return (
+    <SectionReveal className="!opacity-100 !translate-y-0" delay={0.18}>
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <Link
+          href="#selected-work"
+          className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-black px-6 py-4 text-[1rem] font-medium text-white transition-colors hover:bg-neutral-800"
+        >
+          View my work
+          <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </Link>
+        <Link
+          href="#contact"
+          className="group inline-flex items-center justify-center gap-2 rounded-2xl px-2 py-4 text-[1rem] font-medium text-black"
+        >
+          Get in touch
+          <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </SectionReveal>
+  )
+}
+
+function HeroPortrait() {
+  return (
+    <SectionReveal className="!opacity-100 !translate-y-0" delay={0}>
+      <div className="relative overflow-hidden rounded-[32px] bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#ffffff_0%,rgba(255,255,255,0.9)_18%,rgba(255,255,255,0)_34%)]" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-[26%] bg-white" />
+        <Image
+          src="/images/portrait-source.png"
+          alt="Black and white portrait of Daniel Fernandez"
+          width={1200}
+          height={1200}
+          priority
+          className="h-auto w-full grayscale object-cover object-[74%_50%]"
+          sizes="(max-width: 1024px) 100vw, 52vw"
+        />
+      </div>
+    </SectionReveal>
   )
 }
