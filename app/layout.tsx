@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import localFont from "next/font/local"
 
 import "./globals.css"
-import { cn } from "@/lib/utils"
+
 
 const geistSans = localFont({
   src: "./fonts/geist-sans.woff2",
@@ -72,11 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "scroll-smooth bg-white text-black antialiased",
-        geistSans.variable,
-        geistMono.variable
-      )}
+      className={`scroll-smooth bg-white text-black antialiased ${geistSans.variable} ${geistMono.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -23,7 +23,12 @@
 
   body {
     @apply bg-white text-black;
+    min-width: 320px;
     text-rendering: optimizeLegibility;
+  }
+
+  .section-label {
+    @apply text-xs font-medium uppercase tracking-wide text-neutral-500;
   }
 
   ::selection {
