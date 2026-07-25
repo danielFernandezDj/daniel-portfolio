@@ -11,6 +11,12 @@ import {
   TerminalSquare,
 } from "lucide-react"
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -308,13 +314,31 @@ export default function Home() {
               © 2026 Daniel Fernández. All rights reserved.
             </p>
             <div className="flex gap-7">
-              <a href="#github" aria-label="GitHub">
+              <a
+                href="https://github.com/danielFernandezDj?tab=repositories"
+                aria-label="GitHub"
+                target="_blank"
+                className="flex items-center gap-2"
+              >
+                Github
                 <GitBranch className="size-5" />
               </a>
-              <a href="#linkedin" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/daniel-fernandez-tech/"
+                aria-label="LinkedIn"
+                target="_blank"
+                className="flex items-center gap-2"
+              >
+                Linkedin
                 <BriefcaseBusiness className="size-5" />
               </a>
-              <a href="mailto:hello@danielfernandez.dev" aria-label="Email">
+              <a
+                href="mailto:danielfernande.tech@gmail.com"
+                aria-label="Email"
+                target="_blank"
+                className="flex items-center gap-2"
+              >
+                Mail
                 <Mail className="size-5" />
               </a>
             </div>
