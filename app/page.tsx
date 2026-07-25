@@ -179,7 +179,7 @@ export default function Home() {
             Contact
           </a>
           <LinkButton
-            href="#experience"
+            href="https://docs.google.com/document/d/1_qPE7nnIj7lQEVDJM7ak8NGMPn_qDVsMu3Trz1BiyCg/edit?usp=sharing"
             className="[&_button]:h-10 [&_button]:px-4"
           >
             Resume <ArrowDownToLine className="size-4" />
