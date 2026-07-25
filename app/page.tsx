@@ -33,12 +33,6 @@ const services = [
 ]
 
 const projects = [
-  // {
-  //   title: "Akasha Seed",
-  //   description: "AI workspace that helps you capture ideas, notes, and insights. Built with Next.js, Supabase, and Tailwind CSS.",
-  //   tags: ["Next.js", "Supabase", "TypeScript"],
-  //   preview: "akasha",
-  // },
   {
     title: "Dealer Payment Calculator",
     description:
@@ -46,12 +40,6 @@ const projects = [
     tags: ["Next.js", "TypeScript", "Jest"],
     preview: "https://dealer-monthly-payment-calculator.vercel.app",
   },
-  // {
-  //   title: "Water Business CRM",
-  //   description: "CRM system for managing customers, appointments, subscriptions, and service visits for a water treatment business.",
-  //   tags: ["Next.js", "Supabase", "PostgreSQL"],
-  //   preview: "crm",
-  // },
 ]
 
 const experience = [
@@ -154,9 +142,11 @@ export default function Home() {
               <span>PostgreSQL</span>
             </div>
             <div className="mt-9 flex items-center gap-4">
-              <LinkButton href="#work">
-                View my work <ArrowUpRight className="size-4" />
-              </LinkButton>
+              <a href="#work">
+                <Button>
+                  View my work <ArrowUpRight className="size-4" />
+                </Button>
+              </a>
               <a href="#contact">
                 <Button variant="ghost">
                   Get in touch <ArrowRight className="size-4" />
