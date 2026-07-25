@@ -40,11 +40,11 @@ const projects = [
   //   preview: "akasha",
   // },
   {
-    title: "Finance Calculator",
+    title: "Dealer Payment Calculator",
     description:
       "Financial calculator for vehicle payments with trade-in logic, interest rates, and amortization schedules.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    preview: "finance",
+    tags: ["Next.js", "TypeScript", "Jest"],
+    preview: "https://dealer-monthly-payment-calculator.vercel.app",
   },
   // {
   //   title: "Water Business CRM",
@@ -91,69 +91,9 @@ function LinkButton({
   className?: string
 }) {
   return (
-    <a href={href} className={`inline-flex ${className}`}>
+    <a target="_blank" href={href} className={`inline-flex ${className}`}>
       <Button>{children}</Button>
     </a>
-  )
-}
-
-function ProjectPreview({ type }: { type: string }) {
-  if (type === "finance")
-    return (
-      <div className="grid h-full grid-cols-2 gap-3 bg-neutral-50 p-4 text-[9px] text-neutral-500">
-        <div className="rounded-md bg-white p-3 shadow-sm">
-          <p className="mb-3 font-semibold text-black">Your Quote</p>
-          {[
-            "Vehicle price",
-            "Down payment",
-            "Trade-in offer",
-            "Interest rate",
-          ].map((x, i) => (
-            <div key={x} className="mb-2 flex justify-between border-b pb-1">
-              <span>{x}</span>
-              <span>${["34,800", "5,000", "4,000", "6.49%"][i]}</span>
-            </div>
-          ))}
-        </div>
-        <div className="rounded-md bg-white p-3 shadow-sm">
-          <p>Monthly payment</p>
-          <p className="my-2 text-xl font-semibold text-black">$512.48</p>
-          {[36, 48, 60, 72].map((x) => (
-            <div key={x} className="mb-2 flex justify-between">
-              <span>{x} months</span>
-              <span className="text-black">${Math.round(15692 / x)}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  return (
-    <div className="flex h-full bg-neutral-950 p-3 text-[8px] text-neutral-500">
-      <div className="w-1/4 space-y-3 border-r border-neutral-800 pr-3">
-        <p className="font-semibold text-white">
-          {type === "akasha" ? "✦ Akasha" : "Dashboard"}
-        </p>
-        {["Overview", "Insights", "Projects", "Settings"].map((x) => (
-          <p key={x}>{x}</p>
-        ))}
-      </div>
-      <div className="flex-1 p-3">
-        <div className="mb-4 flex items-center justify-between">
-          <p className="font-medium text-neutral-200">Welcome back</p>
-          <span>•••</span>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {["248", "32", "$24,850", "Notes", "Tasks", "Ideas"].map((x) => (
-            <div
-              key={x}
-              className="rounded-md bg-neutral-900 p-3 text-center text-neutral-200"
-            >
-              {x}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -269,16 +209,26 @@ export default function Home() {
           <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-6">
             {projects.map((project) => (
               <article key={project.title} className="group">
-                <div className="aspect-[1.3] overflow-hidden rounded-md border bg-neutral-100 transition-transform duration-300 group-hover:-translate-y-1">
-                  <ProjectPreview type={project.preview} />
+                <div className="aspect-[1.3] overflow-hidden rounded-md border bg-neutral-100 p-2 transition-transform duration-300 group-hover:-translate-y-1">
+                  <iframe
+                    src={project.preview}
+                    loading="lazy"
+                    className="h-full w-full rounded-2xl border"
+                  ></iframe>
                 </div>
-                <div className="mt-5 flex items-start justify-between">
-                  <h2 className="text-lg font-semibold">{project.title}</h2>
-                  <ArrowUpRight className="size-5" />
-                </div>
-                <p className="mt-3 text-sm leading-6 text-neutral-600">
-                  {project.description}
-                </p>
+                <a
+                  href={project.preview}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="mt-5 flex items-start justify-between">
+                    <p className="text-lg font-semibold">{project.title}</p>
+                    <ArrowUpRight className="size-5" />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-neutral-600">
+                    {project.description}
+                  </p>
+                </a>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Badge key={tag}>{tag}</Badge>
