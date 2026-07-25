@@ -224,9 +224,9 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative mx-auto hidden:small:h-[440px] w-full max-w-[580px] overflow-hidden lg:h-[620px]">
+          <div className="hidden:small:h-[440px] relative mx-auto w-full max-w-[580px] overflow-hidden lg:h-[620px]">
             <Image
-              src="/images/hero-portrait.png"
+              src="/images/hero-portrait-2.png"
               alt="Black and white developer portrait"
               fill
               priority
@@ -259,12 +259,12 @@ export default function Home() {
         <section id="work" className="scroll-mt-8 border-b py-12 lg:py-14">
           <div className="flex items-center justify-between">
             <p className="section-label">Selected work</p>
-            <a
+            {/* <a
               className="inline-flex items-center gap-2 text-sm font-medium"
               href="#all-projects"
             >
               View all projects <ArrowRight className="size-4" />
-            </a>
+            </a> */}
           </div>
           <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-6">
             {projects.map((project) => (
@@ -337,12 +337,12 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <a
+          {/* <a
             className="inline-flex items-center gap-3 text-sm font-medium"
             href="#full-experience"
           >
             View full experience <ArrowRight className="size-4" />
-          </a>
+          </a> */}
         </section>
       </div>
 
@@ -359,7 +359,7 @@ export default function Home() {
                 I’m always open to discussing new projects and opportunities.
               </p>
             </div>
-            <LinkButton href="mailto:hello@danielfernandez.dev">
+            <LinkButton href="https://www.linkedin.com/in/daniel-fernandez-tech/">
               Let’s connect <ArrowRight className="size-4" />
             </LinkButton>
           </div>
