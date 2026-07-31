@@ -78,3 +78,26 @@
     @apply scale-x-100;
   }
 }
+
+@layer components {
+  .workflow-grid {
+    @apply grid overflow-hidden rounded-md border sm:grid-cols-2 lg:grid-cols-6;
+  }
+
+  .workflow-step {
+    @apply relative min-h-36 border-b p-5 sm:border-r lg:border-b-0;
+  }
+
+  .workflow-step::after {
+    content: "→";
+    @apply absolute top-1/2 -right-2.5 z-10 hidden size-5 -translate-y-1/2 items-center justify-center rounded-full border bg-white text-xs text-neutral-500 lg:flex;
+  }
+
+  .workflow-step:last-child {
+    @apply border-b-0 sm:border-r-0;
+  }
+
+  .workflow-step:last-child::after {
+    @apply hidden;
+  }
+}

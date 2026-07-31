@@ -15,9 +15,9 @@ const geistMono = localFont({
 })
 
 const siteUrl = "https://danielfernandez.dev"
-const title = "Daniel Fernandez | Full-Stack Developer"
+const title = "Daniel Fernandez | Software Test Automation Engineer"
 const description =
-  "Production-focused portfolio for Daniel Fernandez, a full-stack developer building software that solves real problems."
+  "Software Test Automation Engineer building reliable end-to-end automation across UI, API, data, and CI/CD workflows."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,11 +29,15 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Daniel Fernandez",
-    "Full-Stack Developer",
-    "Next.js",
+    "Software Test Automation Engineer",
+    "SDET",
+    "QA Automation Engineer",
+    "Playwright",
     "TypeScript",
-    "Python",
+    "Jest",
+    "API Testing",
     "PostgreSQL",
+    "GitHub Actions",
     "Portfolio",
   ],
   openGraph: {
@@ -48,7 +52,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Daniel Fernandez portfolio preview",
+        alt: "Daniel Fernandez, Software Test Automation Engineer",
       },
     ],
   },

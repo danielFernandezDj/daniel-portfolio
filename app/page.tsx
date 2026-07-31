@@ -1,41 +1,66 @@
 import Image from "next/image"
 import {
+  Activity,
   ArrowDownToLine,
   ArrowRight,
   ArrowUpRight,
-  Box,
   BriefcaseBusiness,
+  Check,
+  CircleDot,
   Code2,
+  Container,
+  Database,
   GitBranch,
+  GitPullRequest,
+  Globe2,
   Mail,
-  TerminalSquare,
+  Network,
+  ShieldCheck,
 } from "lucide-react"
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
 const services = [
   {
+    icon: Globe2,
+    eyebrow: "UI automation",
+    title: "Playwright",
+    copy: "Reliable browser coverage for critical user journeys.",
+  },
+  {
+    icon: Network,
+    eyebrow: "API testing",
+    title: "REST · GraphQL · Postman",
+    copy: "Contract and response validation across service boundaries.",
+  },
+  {
+    icon: Database,
+    eyebrow: "Data validation",
+    title: "SQL · PostgreSQL",
+    copy: "Database assertions that verify system behavior end to end.",
+  },
+  {
     icon: Code2,
-    title: "AI Products",
-    copy: "Intelligent tools that help people learn, think, and create.",
+    eyebrow: "Test engineering",
+    title: "TypeScript · Jest",
+    copy: "Maintainable suites built from reusable test utilities.",
   },
   {
-    icon: Box,
-    title: "Business Software",
-    copy: "Web applications that automate workflows and drive results.",
+    icon: GitPullRequest,
+    eyebrow: "CI/CD",
+    title: "GitHub Actions · Docker",
+    copy: "Automated quality gates that protect every release.",
   },
-  {
-    icon: TerminalSquare,
-    title: "Internal Tools",
-    copy: "Systems and utilities that improve operations and save time.",
-  },
+]
+
+const workflow = [
+  { icon: CircleDot, title: "User action", tool: "Test scenario" },
+  { icon: Globe2, title: "UI testing", tool: "Playwright" },
+  { icon: Network, title: "API validation", tool: "Postman" },
+  { icon: Database, title: "Data validation", tool: "SQL" },
+  { icon: Container, title: "CI/CD pipeline", tool: "GitHub Actions" },
+  { icon: ShieldCheck, title: "Release", tool: "Quality gate" },
 ]
 
 const projects = [
@@ -45,6 +70,12 @@ const projects = [
       "Financial calculator for vehicle payments with trade-in logic, interest rates, and amortization schedules.",
     tags: ["Next.js", "TypeScript", "Jest"],
     preview: "https://dealer-monthly-payment-calculator.vercel.app",
+    automation: [
+      "Jest calculation tests",
+      "Financial boundary coverage",
+      "Input and result validation",
+      "Regression-ready test design",
+    ],
   },
 ]
 
@@ -125,27 +156,27 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-end px-6 pt-10 lg:grid-cols-2 lg:px-10 lg:pt-14">
           <div className="relative z-10 pb-14 lg:pb-20">
             <p className="mb-7 text-xs font-medium tracking-wide text-neutral-500 uppercase">
-              Full-stack developer
+              Software Test Automation Engineer
             </p>
             <h1 className="max-w-xl text-5xl leading-[0.98] font-semibold tracking-[-0.055em] sm:text-6xl lg:text-[4.6rem]">
-              Building software
+              Building reliable
               <br />
-              that solves
+              automation for
               <br />
-              real problems.
+              every release.
             </h1>
             <p className="mt-7 max-w-md text-base leading-7 text-neutral-600">
-              I build scalable web applications with clean code and great user
-              experiences.
+              I design end-to-end automation that validates software from the
+              user interface to deployment—before bugs reach production.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-              <span>Python</span>
+              <span>UI</span>
               <span>•</span>
-              <span>TypeScript</span>
+              <span>API</span>
               <span>•</span>
-              <span>Next.js</span>
+              <span>Data</span>
               <span>•</span>
-              <span>PostgreSQL</span>
+              <span>CI/CD</span>
             </div>
             <div className="mt-9 flex items-center gap-4">
               <a href="#work">
@@ -175,20 +206,63 @@ export default function Home() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <section className="border-b py-12 lg:py-14">
-          <p className="section-label">What I build</p>
-          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
-            {services.map(({ icon: Icon, title, copy }, i) => (
+          <p className="section-label">Automation stack</p>
+          <div className="mt-8 grid gap-x-0 gap-y-9 md:grid-cols-3">
+            {services.map(({ icon: Icon, eyebrow, title, copy }, i) => (
               <article
                 key={title}
-                className={`md:px-10 ${i === 0 ? "md:pl-0" : "border-neutral-200 md:border-l"}`}
+                className={`md:px-8 ${i % 3 === 0 ? "md:pl-0" : "border-neutral-200 md:border-l"}`}
               >
                 <Icon className="mb-4 size-7 stroke-[1.6]" />
-                <h2 className="text-lg font-semibold">{title}</h2>
+                <p className="text-xs text-neutral-500">{eyebrow}</p>
+                <h2 className="mt-1 text-base font-semibold">{title}</h2>
                 <p className="mt-2 max-w-xs text-sm leading-6 text-neutral-600">
                   {copy}
                 </p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="border-b py-12 lg:py-16">
+          <div className="max-w-xl">
+            <p className="section-label">Automation workflow</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+              Quality engineered into the delivery pipeline.
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">
+              One connected validation path—from the first user action to a
+              confident release.
+            </p>
+          </div>
+          <div className="workflow-grid mt-10">
+            {workflow.map(({ icon: Icon, title, tool }, i) => (
+              <article key={title} className="workflow-step">
+                <div className="flex items-center justify-between">
+                  <Icon className="size-5 stroke-[1.6]" />
+                  <span className="font-mono text-[10px] text-neutral-400">
+                    0{i + 1}
+                  </span>
+                </div>
+                <p className="mt-8 text-sm font-semibold">{title}</p>
+                <p className="mt-1 text-xs text-neutral-500">{tool}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-8 border-b py-12 lg:grid-cols-[1fr_2fr] lg:py-16">
+          <p className="section-label">About</p>
+          <div className="max-w-2xl">
+            <h2 className="text-2xl leading-tight font-semibold tracking-tight sm:text-3xl">
+              I approach quality as an engineering problem.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-neutral-600">
+              I study how systems behave, trace failures across layers, and
+              turn repetitive verification into reliable automation. My focus
+              is building clear, maintainable test coverage that finds risk
+              early and gives teams confidence to ship.
+            </p>
           </div>
         </section>
 
@@ -225,7 +299,23 @@ export default function Home() {
                     {project.description}
                   </p>
                 </a>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 border-t pt-5">
+                  <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
+                    Automation highlights
+                  </p>
+                  <ul className="mt-3 grid gap-2">
+                    {project.automation.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-sm text-neutral-700"
+                      >
+                        <Check className="size-3.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Badge key={tag}>{tag}</Badge>
                   ))}
@@ -236,17 +326,15 @@ export default function Home() {
         </section>
 
         <section className="border-b py-10">
-          <p className="section-label">Tech stack</p>
+          <p className="section-label">Automation engineering</p>
           <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 text-sm sm:text-base">
             {[
-              "Python",
-              "TypeScript",
-              "Next.js",
-              "PostgreSQL",
-              "Supabase",
-              "Tailwind CSS",
+              "E2E frameworks",
+              "API utilities",
+              "SQL assertions",
+              "Regression suites",
+              "Quality gates",
               "Docker",
-              "Git",
             ].map((tech, i) => (
               <span key={tech} className="flex items-center gap-7">
                 {i > 0 && <span className="text-xs">•</span>}
@@ -257,7 +345,15 @@ export default function Home() {
         </section>
 
         <section id="experience" className="scroll-mt-8 py-12 lg:py-14">
-          <p className="section-label">Experience</p>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="section-label">Experience</p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight">
+                A track record of disciplined problem solving.
+              </h2>
+            </div>
+            <Activity className="hidden size-6 stroke-[1.5] sm:block" />
+          </div>
           <div className="mt-8 max-w-4xl">
             {experience.map((item, i) => (
               <article
@@ -297,12 +393,13 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-start">
             <div>
               <h2 className="max-w-md text-4xl leading-[1.05] font-semibold tracking-tight">
-                Let’s build something
+                Let’s make every release
                 <br />
-                great together.
+                more reliable.
               </h2>
               <p className="mt-4 text-sm text-neutral-600">
-                I’m always open to discussing new projects and opportunities.
+                I’m open to test automation and quality engineering
+                opportunities.
               </p>
             </div>
             <LinkButton href="https://www.linkedin.com/in/daniel-fernandez-tech/">
