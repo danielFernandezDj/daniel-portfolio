@@ -31,7 +31,7 @@ const services = [
   {
     icon: Network,
     eyebrow: "API testing",
-    title: "REST · GraphQL · Postman",
+    title: "REST APIs · Postman",
     copy: "Contract and response validation across service boundaries.",
   },
   {
@@ -49,7 +49,7 @@ const services = [
   {
     icon: GitPullRequest,
     eyebrow: "CI/CD",
-    title: "GitHub Actions · Docker",
+    title: "GitHub Actions",
     copy: "Automated quality gates that protect every release.",
   },
 ]
@@ -166,8 +166,8 @@ export default function Home() {
               every release.
             </h1>
             <p className="mt-7 max-w-md text-base leading-7 text-neutral-600">
-              I design end-to-end automation that validates software from the
-              user interface to deployment—before bugs reach production.
+              I build reliable test automation that catches regressions early
+              and gives teams confidence to release.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
               <span>UI</span>
@@ -206,7 +206,7 @@ export default function Home() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <section className="border-b py-12 lg:py-14">
-          <p className="section-label">Automation stack</p>
+          <p className="section-label">Automation toolkit</p>
           <div className="mt-8 grid gap-x-0 gap-y-9 md:grid-cols-3">
             {services.map(({ icon: Icon, eyebrow, title, copy }, i) => (
               <article
@@ -258,10 +258,10 @@ export default function Home() {
               I approach quality as an engineering problem.
             </h2>
             <p className="mt-5 text-base leading-7 text-neutral-600">
-              I study how systems behave, trace failures across layers, and
-              turn repetitive verification into reliable automation. My focus
-              is building clear, maintainable test coverage that finds risk
-              early and gives teams confidence to ship.
+              I study how systems behave, trace failures across layers, and turn
+              repetitive verification into reliable automation. My focus is
+              building clear, maintainable test coverage that finds risk early
+              and gives teams confidence to ship.
             </p>
           </div>
         </section>
