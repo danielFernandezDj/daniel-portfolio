@@ -144,7 +144,7 @@ export default function Home() {
             Contact
           </a>
           <LinkButton
-            href="https://docs.google.com/document/d/1XzfJa0Wlos5Mj91J63XABjWBNXKp0X9EOo2k0fUMANI/edit?usp=sharing"
+            href="../Daniel-Fernandez-CV.pdf"
             className="[&_button]:h-10 [&_button]:px-4"
           >
             Resume <ArrowDownToLine className="size-4" />
