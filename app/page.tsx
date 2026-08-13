@@ -245,33 +245,6 @@ export default function Home() {
           </section>
         </section>
 
-        {/* <section className="border-b py-12 lg:py-16">
-          <div className="max-w-xl">
-            <p className="section-label">Automation workflow</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
-              Quality engineered into the delivery pipeline.
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-neutral-600">
-              One connected validation path—from the first user action to a
-              confident release.
-            </p>
-          </div>
-          <div className="workflow-grid mt-10">
-            {workflow.map(({ icon: Icon, title, tool }, i) => (
-              <article key={title} className="workflow-step">
-                <div className="flex items-center justify-between">
-                  <Icon className="size-5 stroke-[1.6]" />
-                  <span className="font-mono text-[10px] text-neutral-400">
-                    0{i + 1}
-                  </span>
-                </div>
-                <p className="mt-8 text-sm font-semibold">{title}</p>
-                <p className="mt-1 text-xs text-neutral-500">{tool}</p>
-              </article>
-            ))}
-          </div>
-        </section> */}
-
         <section className="grid gap-8 border-b py-12 lg:grid-cols-[1fr_2fr] lg:py-16">
           <p className="section-label">About</p>
           <div className="max-w-2xl">
@@ -342,25 +315,6 @@ export default function Home() {
                   ))}
                 </div>
               </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="border-b py-10">
-          <p className="section-label">Automation engineering</p>
-          <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 text-sm sm:text-base">
-            {[
-              "E2E frameworks",
-              "API utilities",
-              "SQL assertions",
-              "Regression suites",
-              "Quality gates",
-              "Docker",
-            ].map((tech, i) => (
-              <span key={tech} className="flex items-center gap-7">
-                {i > 0 && <span className="text-xs">•</span>}
-                {tech}
-              </span>
             ))}
           </div>
         </section>
