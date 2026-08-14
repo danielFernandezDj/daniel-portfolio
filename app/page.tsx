@@ -16,6 +16,7 @@ import {
   Mail,
   Network,
   ShieldCheck,
+  Calculator,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -67,15 +68,18 @@ const projects = [
   {
     title: "Dealer Payment Calculator",
     description:
-      "Financial calculator for vehicle payments with trade-in logic, interest rates, and amortization schedules.",
+      "A production-deployed financial calculator used to model vehicle payments, trade equity, APR, taxes, fees, and amortization.",
     tags: ["Next.js", "TypeScript", "Jest"],
     preview: "https://dealer-monthly-payment-calculator.vercel.app",
     automation: [
-      "Jest calculation tests",
-      "Financial boundary coverage",
-      "Input and result validation",
-      "Regression-ready test design",
+      "Calculation accuracy",
+      "Boundary cases",
+      "Input validation",
+      "Regression protection",
     ],
+    link1: "https://dealer-monthly-payment-calculator.vercel.app",
+    link2:
+      "https://github.com/danielFernandezDj/dealer-monthly-payment-calculator.git",
   },
 ]
 
@@ -270,29 +274,29 @@ export default function Home() {
               View all projects <ArrowRight className="size-4" />
             </a> */}
           </div>
-          <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-6">
+          <div className="mt-8 grid gap-10 md:gap-6">
             {projects.map((project) => (
               <article key={project.title} className="group">
-                <div className="aspect-[1.3] overflow-hidden rounded-md border bg-neutral-100 p-2 transition-transform duration-300 group-hover:-translate-y-1">
+                <div className="aspect-[1.1] overflow-hidden rounded-md border bg-neutral-100 p-2">
                   <iframe
                     src={project.preview}
                     loading="lazy"
                     className="h-full w-full rounded-2xl border"
                   ></iframe>
                 </div>
-                <a
+                {/* <a
                   href={project.preview}
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  <div className="mt-5 flex items-start justify-between">
-                    <p className="text-lg font-semibold">{project.title}</p>
-                    <ArrowUpRight className="size-5" />
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-neutral-600">
-                    {project.description}
-                  </p>
-                </a>
+                > */}
+                <div className="mt-5 flex items-start justify-between">
+                  <p className="text-lg font-semibold">{project.title}</p>
+                  <Calculator className="size-5" />
+                </div>
+                <p className="mt-3 text-sm leading-6 text-neutral-600">
+                  {project.description}
+                </p>
+                {/* </a> */}
                 <div className="mt-5 border-t pt-5">
                   <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
                     Automation highlights
@@ -313,6 +317,24 @@ export default function Home() {
                   {project.tags.map((tag) => (
                     <Badge key={tag}>{tag}</Badge>
                   ))}
+                </div>
+                <div className="my-5 flex gap-6">
+                  <a
+                    href={project.link1}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800"
+                  >
+                    Live App <ArrowUpRight className="size-4" />
+                  </a>
+                  <a
+                    href={project.link2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800"
+                  >
+                    View Source <ArrowUpRight className="size-4" />
+                  </a>
                 </div>
               </article>
             ))}
