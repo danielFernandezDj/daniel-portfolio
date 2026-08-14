@@ -89,7 +89,7 @@ const experience = [
     date: "2025 – Present",
     role: "Water Treatment Consultant",
     company: "TG Water Systems",
-    copy: "Lead in-home water tests, consult with homeowners, and deliver tailored water treatment solutions. Close high-ticket sales and coordinate installations.",
+    copy: "Assess customer requirements and technical conditions, investigate reported issues, and coordinate solutions across customers, installers, and internal teams.",
   },
   {
     date: "2023 – 2025",
