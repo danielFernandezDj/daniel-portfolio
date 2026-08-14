@@ -299,7 +299,7 @@ export default function Home() {
                 {/* </a> */}
                 <div className="mt-5 border-t pt-5">
                   <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
-                    Automation highlights
+                    TESTING COVERAGE
                   </p>
                   <ul className="mt-3 grid gap-2">
                     {project.automation.map((item) => (
