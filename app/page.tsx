@@ -21,6 +21,7 @@ import {
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { describe } from "node:test"
 
 const services = [
   {
@@ -85,28 +86,22 @@ const projects = [
 
 const experience = [
   {
-    date: "Dec 2024 – Present",
-    role: "Sales & Water Solutions Specialist",
+    date: "Dec 2025 – Present",
+    role: "Water Treatment Consultant",
     company: "TG Water Systems",
     copy: "Lead in-home water tests, consult with homeowners, and deliver tailored water treatment solutions. Close high-ticket sales and coordinate installations.",
   },
   {
-    date: "May 2023 – Dec 2024",
-    role: "Sales Consultant",
-    company: "Lithia Toyota Odessa",
-    copy: "Helped customers find the right vehicle through a consultative sales process. Built relationships, generated leads, and consistently delivered excellent customer service.",
-  },
-  {
-    date: "2022 – 2023",
+    date: "2023 – 2025",
     role: "Sales Specialist",
     company: "Lowe’s Home Improvement",
-    copy: "Assisted customers with product selection and project planning. Drove sales and maintained product knowledge across departments.",
+    copy: "Managed customer projects from requirements gathering through installation, coordinating documentation, timelines, vendors, and issue resolution.",
   },
   {
-    date: "2019 – 2022",
+    date: "2020 – 2023",
     role: "Associate",
     company: "Walmart",
-    copy: "Provided excellent customer service, maintained store standards, and supported daily operations across multiple departments.",
+    copy: "Supported customers and daily operations in a high-volume environment while maintaining accuracy, organization, and service quality.",
   },
 ]
 
@@ -406,7 +401,7 @@ export default function Home() {
           </div>
           <div className="mt-12 flex flex-col-reverse justify-between gap-6 sm:flex-row sm:items-center">
             <p className="text-xs text-neutral-500">
-              © 2026 Daniel Fernández. All rights reserved.
+              © 2026 Daniel Fernandez. All rights reserved.
             </p>
             <div className="flex gap-7">
               <a
