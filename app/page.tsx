@@ -423,7 +423,7 @@ export default function Home() {
                 <BriefcaseBusiness className="size-5" />
               </a>
               <a
-                href="mailto:danielfernande.tech@gmail.com"
+                href="mailto:danielfernandez.tech@gmail.com"
                 aria-label="Email"
                 target="_blank"
                 className="flex items-center gap-2"
