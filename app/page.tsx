@@ -258,8 +258,9 @@ export default function Home() {
             <p className="mt-5 text-base leading-7 text-neutral-600">
               I study how systems behave, trace failures across layers, and turn
               repetitive verification into reliable automation. My focus is
-              building clear, maintainable test coverage that catches
-              regressions early and gives teams confidence to ship.
+              understanding where software can fail, designing meaningful
+              coverage around those risks, and keeping tests clear enough to
+              maintain as the system evolves.
             </p>
           </div>
         </section>
