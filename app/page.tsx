@@ -86,14 +86,14 @@ const projects = [
 
 const experience = [
   {
-    date: "Dec 2025 – Present",
+    date: "2025 – Present",
     role: "Water Treatment Consultant",
     company: "TG Water Systems",
     copy: "Lead in-home water tests, consult with homeowners, and deliver tailored water treatment solutions. Close high-ticket sales and coordinate installations.",
   },
   {
     date: "2023 – 2025",
-    role: "Sales Specialist",
+    role: "Flooring Sales Specialist",
     company: "Lowe’s Home Improvement",
     copy: "Managed customer projects from requirements gathering through installation, coordinating documentation, timelines, vendors, and issue resolution.",
   },
