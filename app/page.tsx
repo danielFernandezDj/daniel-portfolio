@@ -121,56 +121,6 @@ function LinkButton({
   )
 }
 
-function DealerMathPreview() {
-  return (
-    <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b bg-blue-950 px-5 py-4 text-white">
-        <div>
-          <p className="text-xs text-blue-200">Dealer Math</p>
-          <p className="font-semibold">Vehicle Financing Model</p>
-        </div>
-        <div className="rounded-full border border-white/20 px-3 py-1 text-xs">
-          Live
-        </div>
-      </div>
-
-      <div className="grid gap-4 p-5 sm:grid-cols-2">
-        <div className="space-y-3">
-          {[
-            ["Vehicle price", "$35,000"],
-            ["Down payment", "$5,000"],
-            ["Trade equity", "-$2,000"],
-            ["Sales tax", "6.25%"],
-            ["APR", "7.99%"],
-          ].map(([label, value]) => (
-            <div
-              key={label}
-              className="flex items-center justify-between rounded-md border px-3 py-2.5 text-sm"
-            >
-              <span className="text-neutral-500">{label}</span>
-              <span className="font-medium">{value}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex min-h-56 flex-col justify-between rounded-lg bg-slate-100 p-5">
-          <div>
-            <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
-              Amount financed
-            </p>
-            <p className="mt-2 text-3xl font-semibold tracking-tight">$34,412</p>
-          </div>
-
-          <div className="border-t pt-4">
-            <p className="text-xs text-neutral-500">72 months</p>
-            <p className="mt-1 text-2xl font-semibold">$603 / mo</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Home() {
   return (
     <main>
@@ -328,7 +278,24 @@ export default function Home() {
               aria-label="Open Dealer Math case study"
               className="block transition-transform duration-300 hover:-translate-y-1"
             >
-              <DealerMathPreview />
+              <div className="relative pb-6 pr-10 sm:pb-8 sm:pr-14">
+                <Image
+                  src="/images/Macbook-Air-dealer-math-screenshot.webp"
+                  alt="Dealer Math vehicle financing calculator on a MacBook Air"
+                  width={3178}
+                  height={1826}
+                  sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 90vw"
+                  className="h-auto w-full"
+                />
+                <Image
+                  src="/images/iPhone-13-PRO-dealer-math-screenshot.webp"
+                  alt="Dealer Math vehicle financing calculator on an iPhone 13 Pro"
+                  width={914}
+                  height={1856}
+                  sizes="(min-width: 1280px) 144px, (min-width: 1024px) 12vw, 22vw"
+                  className="absolute right-0 bottom-0 h-auto w-[24%]"
+                />
+              </div>
             </Link>
           </article>
         </section>

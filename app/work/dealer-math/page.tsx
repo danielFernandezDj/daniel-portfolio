@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import {
   ArrowLeft,
@@ -34,82 +35,6 @@ const engineering = [
     copy: "Automated tests focus on calculation behavior, boundary conditions, input validation, and regression protection around the financial model.",
   },
 ]
-
-function DealerMathProductPreview() {
-  return (
-    <div className="overflow-hidden rounded-xl border bg-slate-100 shadow-sm">
-      <div className="flex items-center justify-between bg-blue-950 px-5 py-4 text-white">
-        <div>
-          <p className="text-xs text-blue-200">Dealer Math</p>
-          <p className="font-semibold">Dealer Payment Calculator</p>
-        </div>
-        <span className="rounded-full border border-white/20 px-3 py-1 text-xs">
-          Production deployed
-        </span>
-      </div>
-
-      <div className="grid gap-5 p-5 lg:grid-cols-[1fr_0.9fr] lg:p-7">
-        <div className="space-y-3">
-          {[
-            ["Vehicle Price", "$35,000"],
-            ["Down Payment", "$5,000"],
-            ["Current Payoff", "$10,000"],
-            ["Dealer Trade Offer", "$8,000"],
-            ["Sales Tax Rate", "6.25%"],
-            ["Dealer Fees", "$225"],
-            ["APR", "7.99%"],
-          ].map(([label, value], i) => (
-            <div key={label} className="rounded-lg border bg-white p-4">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-[10px] font-medium tracking-wide text-neutral-400 uppercase">
-                    0{i + 1}
-                  </p>
-                  <p className="mt-1 text-sm text-neutral-600">{label}</p>
-                </div>
-                <p className="font-semibold">{value}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-5">
-            <p className="text-xs font-medium tracking-wide text-red-600 uppercase">
-              Trade position
-            </p>
-            <p className="mt-2 text-3xl font-semibold text-red-700">-$2,000</p>
-            <p className="mt-2 text-xs leading-5 text-red-700/70">
-              Negative equity becomes part of the financing model instead of
-              disappearing inside the monthly payment.
-            </p>
-          </div>
-
-          <div className="flex flex-1 flex-col justify-between rounded-lg bg-white p-5">
-            <div>
-              <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
-                Amount financed
-              </p>
-              <p className="mt-2 text-4xl font-semibold tracking-tight">
-                $34,412
-              </p>
-            </div>
-
-            <div className="mt-12 border-t pt-5">
-              <div className="flex items-end justify-between">
-                <div>
-                  <p className="text-xs text-neutral-500">72 months</p>
-                  <p className="mt-1 text-2xl font-semibold">$603 / mo</p>
-                </div>
-                <p className="text-xs text-neutral-400">7.99% APR</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function DealerMathCaseStudy() {
   return (
@@ -182,7 +107,24 @@ export default function DealerMathCaseStudy() {
           </div>
 
           <div className="mt-12 lg:mt-16">
-            <DealerMathProductPreview />
+            <div className="relative pb-6 pr-10 sm:pb-8 sm:pr-14 lg:pb-12 lg:pr-24">
+              <Image
+                src="/images/Macbook-Air-dealer-math-screenshot.webp"
+                alt="Dealer Math vehicle financing calculator on a MacBook Air"
+                width={3178}
+                height={1826}
+                sizes="(min-width: 1280px) 1104px, (min-width: 1024px) calc(100vw - 176px), (min-width: 640px) calc(100vw - 104px), calc(100vw - 88px)"
+                className="h-auto w-full"
+              />
+              <Image
+                src="/images/iPhone-13-PRO-dealer-math-screenshot.webp"
+                alt="Dealer Math vehicle financing calculator on an iPhone 13 Pro"
+                width={914}
+                height={1856}
+                sizes="(min-width: 1280px) 288px, 24vw"
+                className="absolute right-0 bottom-0 h-auto w-[24%]"
+              />
+            </div>
           </div>
         </div>
       </section>
