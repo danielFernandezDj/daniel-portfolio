@@ -13,8 +13,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-const liveApp =
-  "https://dealer-monthly-payment-calculator.vercel.app"
+const liveApp = "https://dealer-monthly-payment-calculator.vercel.app"
 const source =
   "https://github.com/danielFernandezDj/dealer-monthly-payment-calculator.git"
 
@@ -107,7 +106,7 @@ export default function DealerMathCaseStudy() {
           </div>
 
           <div className="mt-12 lg:mt-16">
-            <div className="relative pb-6 pr-10 sm:pb-8 sm:pr-14 lg:pb-12 lg:pr-24">
+            <div className="relative pr-10 pb-6 sm:pr-14 sm:pb-8 lg:pr-24 lg:pb-12">
               <Image
                 src="/images/Macbook-Air-dealer-math-screenshot.webp"
                 alt="Dealer Math vehicle financing calculator on a MacBook Air"
@@ -383,16 +382,13 @@ export default function DealerMathCaseStudy() {
 
             <div className="flex flex-wrap gap-4">
               <a href={liveApp} target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary">
+                <Button>
                   Launch app <ArrowUpRight className="size-4" />
                 </Button>
               </a>
 
               <a href={source} target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  className="border-neutral-700 bg-transparent text-white hover:bg-neutral-900 hover:text-white"
-                >
+                <Button className="border-neutral-700 bg-transparent text-white hover:bg-neutral-900 hover:text-white">
                   View source <GitBranch className="size-4" />
                 </Button>
               </a>
