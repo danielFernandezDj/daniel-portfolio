@@ -1,86 +1,81 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
   Activity,
   ArrowDownToLine,
   ArrowRight,
   ArrowUpRight,
   BriefcaseBusiness,
-  Check,
   CircleDot,
   Code2,
-  Container,
   Database,
   GitBranch,
   GitPullRequest,
-  Globe2,
   Mail,
   Network,
   ShieldCheck,
-  Calculator,
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { describe } from "node:test"
 
-const services = [
+const capabilities = [
   {
-    icon: Globe2,
-    eyebrow: "UI automation",
-    title: "Playwright",
-    copy: "Reliable browser coverage for critical user journeys.",
-  },
-  {
-    icon: Network,
-    eyebrow: "API testing",
-    title: "REST APIs · Postman",
-    copy: "Contract and response validation across service boundaries.",
+    icon: Code2,
+    eyebrow: "Application development",
+    title: "TypeScript · Next.js · React",
+    copy: "Build maintainable interfaces and application logic around real user and business workflows.",
   },
   {
     icon: Database,
-    eyebrow: "Data validation",
-    title: "SQL · PostgreSQL",
-    copy: "Database assertions that verify system behavior end to end.",
+    eyebrow: "Data & persistence",
+    title: "PostgreSQL · SQL · Prisma",
+    copy: "Model application data, persist system state, and validate behavior at the data layer.",
   },
   {
-    icon: Code2,
-    eyebrow: "Test engineering",
-    title: "TypeScript · Jest",
-    copy: "Maintainable suites built from reusable test utilities.",
+    icon: Network,
+    eyebrow: "API integration",
+    title: "REST · JSON · HTTP",
+    copy: "Connect application behavior across service boundaries and reason about data contracts.",
+  },
+  {
+    icon: ShieldCheck,
+    eyebrow: "Quality engineering",
+    title: "Playwright · Jest · Postman",
+    copy: "Protect critical behavior with targeted automated testing and regression coverage.",
   },
   {
     icon: GitPullRequest,
-    eyebrow: "CI/CD",
-    title: "GitHub Actions",
-    copy: "Automated quality gates that protect every release.",
+    eyebrow: "Delivery",
+    title: "Git · GitHub Actions",
+    copy: "Ship changes through version-controlled workflows and automated delivery pipelines.",
   },
 ]
 
-const workflow = [
-  { icon: CircleDot, title: "User action", tool: "Test scenario" },
-  { icon: Globe2, title: "UI testing", tool: "Playwright" },
-  { icon: Network, title: "API validation", tool: "Postman" },
-  { icon: Database, title: "Data validation", tool: "SQL" },
-  { icon: Container, title: "CI/CD pipeline", tool: "GitHub Actions" },
-  { icon: ShieldCheck, title: "Release", tool: "Quality gate" },
-]
-
-const projects = [
+const approach = [
   {
-    title: "Dealer Payment Calculator",
-    description:
-      "A production-deployed financial calculator used to model vehicle payments, trade equity, APR, taxes, fees, and amortization.",
-    tags: ["Next.js", "TypeScript", "Jest"],
-    preview: "https://dealer-monthly-payment-calculator.vercel.app",
-    automation: [
-      "Calculation accuracy",
-      "Boundary cases",
-      "Input validation",
-      "Regression protection",
-    ],
-    link1: "https://dealer-monthly-payment-calculator.vercel.app",
-    link2:
-      "https://github.com/danielFernandezDj/dealer-monthly-payment-calculator.git",
+    icon: CircleDot,
+    title: "Understand",
+    copy: "Find the actual user or business problem.",
+  },
+  {
+    icon: Network,
+    title: "Model",
+    copy: "Define the workflow, data, constraints, and failure points.",
+  },
+  {
+    icon: Code2,
+    title: "Build",
+    copy: "Implement the simplest maintainable solution.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Validate",
+    copy: "Verify behavior and important failure conditions.",
+  },
+  {
+    icon: GitPullRequest,
+    title: "Deliver",
+    copy: "Deploy, observe, and improve the system.",
   },
 ]
 
@@ -89,19 +84,19 @@ const experience = [
     date: "2025 – Present",
     role: "Water Treatment Consultant",
     company: "TG Water Systems",
-    copy: "Assess customer requirements and technical conditions, investigate reported issues, and coordinate solutions across customers, installers, and internal teams.",
+    copy: "Translate customer requirements and water-quality findings into treatment recommendations, then coordinate the solution from diagnosis through installation.",
   },
   {
     date: "2023 – 2025",
     role: "Flooring Sales Specialist",
     company: "Lowe’s Home Improvement",
-    copy: "Managed customer projects from requirements gathering through installation, coordinating documentation, timelines, vendors, and issue resolution.",
+    copy: "Moved customer projects from requirements gathering to installation by coordinating product decisions, documentation, vendors, timelines, and issue resolution.",
   },
   {
     date: "2020 – 2023",
     role: "Associate",
     company: "Walmart",
-    copy: "Supported customers and daily operations in a high-volume environment while maintaining accuracy, organization, and service quality.",
+    copy: "Supported customers and high-volume daily operations while maintaining accuracy, organization, and consistent service execution.",
   },
 ]
 
@@ -115,9 +110,64 @@ function LinkButton({
   className?: string
 }) {
   return (
-    <a target="_blank" href={href} className={`inline-flex ${className}`}>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
+      className={`inline-flex ${className}`}
+    >
       <Button>{children}</Button>
     </a>
+  )
+}
+
+function DealerMathPreview() {
+  return (
+    <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b bg-blue-950 px-5 py-4 text-white">
+        <div>
+          <p className="text-xs text-blue-200">Dealer Math</p>
+          <p className="font-semibold">Vehicle Financing Model</p>
+        </div>
+        <div className="rounded-full border border-white/20 px-3 py-1 text-xs">
+          Live
+        </div>
+      </div>
+
+      <div className="grid gap-4 p-5 sm:grid-cols-2">
+        <div className="space-y-3">
+          {[
+            ["Vehicle price", "$35,000"],
+            ["Down payment", "$5,000"],
+            ["Trade equity", "-$2,000"],
+            ["Sales tax", "6.25%"],
+            ["APR", "7.99%"],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="flex items-center justify-between rounded-md border px-3 py-2.5 text-sm"
+            >
+              <span className="text-neutral-500">{label}</span>
+              <span className="font-medium">{value}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex min-h-56 flex-col justify-between rounded-lg bg-slate-100 p-5">
+          <div>
+            <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
+              Amount financed
+            </p>
+            <p className="mt-2 text-3xl font-semibold tracking-tight">$34,412</p>
+          </div>
+
+          <div className="border-t pt-4">
+            <p className="text-xs text-neutral-500">72 months</p>
+            <p className="mt-1 text-2xl font-semibold">$603 / mo</p>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -132,6 +182,7 @@ export default function Home() {
         >
           DF
         </a>
+
         <nav
           className="flex items-center gap-2 sm:gap-7"
           aria-label="Primary navigation"
@@ -139,11 +190,14 @@ export default function Home() {
           <a className="nav-link hidden text-sm sm:block" href="#work">
             Work
           </a>
+          <a className="nav-link hidden text-sm sm:block" href="#experience">
+            Experience
+          </a>
           <a className="nav-link hidden text-sm sm:block" href="#contact">
             Contact
           </a>
           <LinkButton
-            href="../Daniel-Fernandez-CV.pdf"
+            href="/Daniel-Fernandez-CV.pdf"
             className="[&_button]:h-10 [&_button]:px-4"
           >
             Resume <ArrowDownToLine className="size-4" />
@@ -155,28 +209,33 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-end px-6 pt-10 lg:grid-cols-2 lg:px-10 lg:pt-14">
           <div className="relative z-10 pb-14 lg:pb-20">
             <p className="mb-7 text-xs font-medium tracking-wide text-neutral-500 uppercase">
-              Software Test Automation Engineer
+              Software Developer · Systems & Automation
             </p>
+
             <h1 className="max-w-xl text-5xl leading-[0.98] font-semibold tracking-[-0.055em] sm:text-6xl lg:text-[4.6rem]">
-              Building reliable
+              Building software
               <br />
-              automation for
+              around real
               <br />
-              every release.
+              problems.
             </h1>
+
             <p className="mt-7 max-w-md text-base leading-7 text-neutral-600">
-              I build reliable test automation that catches regressions early
-              and gives teams confidence to release.
+              I turn business and user problems into practical software
+              solutions—from modeling the workflow and data to building,
+              validating, and delivering the system.
             </p>
+
             <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-              <span>UI</span>
-              <span>•</span>
-              <span>API</span>
+              <span>Applications</span>
               <span>•</span>
               <span>Data</span>
               <span>•</span>
-              <span>CI/CD</span>
+              <span>APIs</span>
+              <span>•</span>
+              <span>Automation</span>
             </div>
+
             <div className="mt-9 flex items-center gap-4">
               <a href="#work">
                 <Button>
@@ -190,13 +249,14 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="hidden:small:h-[440px] relative mx-auto w-full max-w-[580px] overflow-hidden lg:h-[620px]">
+
+          <div className="relative mx-auto hidden h-[620px] w-full max-w-[580px] overflow-hidden lg:block">
             <Image
               src="/images/hero-portrait-2.png"
               alt="Black and white developer portrait"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="50vw"
               className="object-cover object-top"
             />
           </div>
@@ -204,13 +264,87 @@ export default function Home() {
       </section>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <section id="work" className="scroll-mt-8 border-b py-12 lg:py-16">
+          <div className="flex items-center justify-between">
+            <p className="section-label">Selected work</p>
+            <p className="hidden text-xs text-neutral-500 sm:block">
+              01 / Featured project
+            </p>
+          </div>
+
+          <article className="mt-8 grid items-center gap-10 lg:grid-cols-[0.9fr_1.25fr] lg:gap-16">
+            <div>
+              <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
+                Financial decision modeling
+              </p>
+
+              <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                Dealer Math
+              </h2>
+
+              <p className="mt-4 text-xl leading-8 font-medium">
+                Vehicle financing, made easier to reason about.
+              </p>
+
+              <p className="mt-5 max-w-xl text-base leading-7 text-neutral-600">
+                A financial modeling application that brings vehicle price,
+                trade position, taxes, fees, APR, and loan terms into one
+                transparent calculation workflow.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2 text-xs text-neutral-500">
+                <span>Next.js</span>
+                <span>·</span>
+                <span>TypeScript</span>
+                <span>·</span>
+                <span>PostgreSQL</span>
+                <span>·</span>
+                <span>Prisma</span>
+                <span>·</span>
+                <span>Jest</span>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-5">
+                <Link
+                  href="/work/dealer-math"
+                  className="inline-flex items-center gap-2 text-sm font-semibold"
+                >
+                  Explore case study <ArrowRight className="size-4" />
+                </Link>
+
+                <a
+                  href="https://dealer-monthly-payment-calculator.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-black"
+                >
+                  Launch app <ArrowUpRight className="size-4" />
+                </a>
+              </div>
+            </div>
+
+            <Link
+              href="/work/dealer-math"
+              aria-label="Open Dealer Math case study"
+              className="block transition-transform duration-300 hover:-translate-y-1"
+            >
+              <DealerMathPreview />
+            </Link>
+          </article>
+        </section>
+
         <section className="border-b py-12 lg:py-14">
-          <p className="section-label">Automation toolkit</p>
+          <p className="section-label">Engineering capabilities</p>
+
           <div className="mt-8 grid gap-x-0 gap-y-9 md:grid-cols-3">
-            {services.map(({ icon: Icon, eyebrow, title, copy }, i) => (
+            {capabilities.map(({ icon: Icon, eyebrow, title, copy }, i) => (
               <article
                 key={title}
-                className={`md:px-8 ${i % 3 === 0 ? "md:pl-0" : "border-neutral-200 md:border-l"}`}
+                className={`md:px-8 ${
+                  i % 3 === 0
+                    ? "md:pl-0"
+                    : "border-neutral-200 md:border-l"
+                }`}
               >
                 <Icon className="mb-4 size-7 stroke-[1.6]" />
                 <p className="text-xs text-neutral-500">{eyebrow}</p>
@@ -221,15 +355,20 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </section>
 
-          <section className="pt-8 lg:pt-8">
-            <p className="mt-3 text-sm leading-6 text-neutral-600">
-              One connected validation path—from the first user action to a
-              confident release.
-            </p>
-            <div className="workflow-grid mt-5">
-              {workflow.map(({ icon: Icon, title, tool }, i) => (
-                <article key={title} className="workflow-step">
+        <section className="border-b py-12 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-[1fr_2.2fr]">
+            <div>
+              <p className="section-label">How I work</p>
+              <h2 className="mt-4 max-w-xs text-2xl font-semibold tracking-tight">
+                Technology follows the problem.
+              </h2>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {approach.map(({ icon: Icon, title, copy }, i) => (
+                <article key={title} className="rounded-md border p-4">
                   <div className="flex items-center justify-between">
                     <Icon className="size-5 stroke-[1.6]" />
                     <span className="font-mono text-[10px] text-neutral-400">
@@ -237,107 +376,38 @@ export default function Home() {
                     </span>
                   </div>
                   <p className="mt-8 text-sm font-semibold">{title}</p>
-                  <p className="mt-1 text-xs text-neutral-500">{tool}</p>
+                  <p className="mt-1 text-xs leading-5 text-neutral-500">
+                    {copy}
+                  </p>
                 </article>
               ))}
             </div>
-          </section>
+          </div>
         </section>
 
         <section className="grid gap-8 border-b py-12 lg:grid-cols-[1fr_2fr] lg:py-16">
           <p className="section-label">About</p>
+
           <div className="max-w-2xl">
             <h2 className="text-2xl leading-tight font-semibold tracking-tight sm:text-3xl">
-              I approach quality as an engineering problem.
+              My path into software started with solving problems outside of
+              software.
             </h2>
+
             <p className="mt-5 text-base leading-7 text-neutral-600">
-              I study how systems behave, trace failures across layers, and turn
-              repetitive verification into reliable automation. My focus is
-              understanding where software can fail, designing meaningful
-              coverage around those risks, and keeping tests clear enough to
-              maintain as the system evolves.
+              Customer-facing and operational roles taught me to clarify vague
+              requirements, understand constraints, coordinate moving parts,
+              and stay accountable for the outcome. I bring that same approach
+              to software: understand what needs to change, model the system,
+              then choose the technology that supports the solution.
             </p>
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-8 border-b py-12 lg:py-14">
-          <div className="flex items-center justify-between">
-            <p className="section-label">Selected work</p>
-            {/* <a
-              className="inline-flex items-center gap-2 text-sm font-medium"
-              href="#all-projects"
-            >
-              View all projects <ArrowRight className="size-4" />
-            </a> */}
-          </div>
-          <div className="mt-8 grid gap-10 md:gap-6">
-            {projects.map((project) => (
-              <article key={project.title} className="group">
-                <div className="aspect-[1.1] overflow-hidden rounded-md border bg-neutral-100 p-2">
-                  <iframe
-                    src={project.preview}
-                    loading="lazy"
-                    className="h-full w-full rounded-2xl border"
-                  ></iframe>
-                </div>
-                {/* <a
-                  href={project.preview}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                > */}
-                <div className="mt-5 flex items-start justify-between">
-                  <p className="text-lg font-semibold">{project.title}</p>
-                  <Calculator className="size-5" />
-                </div>
-                <p className="mt-3 text-sm leading-6 text-neutral-600">
-                  {project.description}
-                </p>
-                {/* </a> */}
-                <div className="mt-5 border-t pt-5">
-                  <p className="text-xs font-medium tracking-wide text-neutral-500 uppercase">
-                    TESTING COVERAGE
-                  </p>
-                  <ul className="mt-3 grid gap-2">
-                    {project.automation.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-2 text-sm text-neutral-700"
-                      >
-                        <Check className="size-3.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
-                  ))}
-                </div>
-                <div className="my-5 flex gap-6">
-                  <a
-                    href={project.link1}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800"
-                  >
-                    Live App <ArrowUpRight className="size-4" />
-                  </a>
-                  <a
-                    href={project.link2}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800"
-                  >
-                    View Source <ArrowUpRight className="size-4" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="experience" className="scroll-mt-8 py-12 lg:py-14">
+        <section
+          id="experience"
+          className="scroll-mt-8 py-12 lg:py-14"
+        >
           <div className="flex items-end justify-between gap-6">
             <div>
               <p className="section-label">Experience</p>
@@ -347,6 +417,7 @@ export default function Home() {
             </div>
             <Activity className="hidden size-6 stroke-[1.5] sm:block" />
           </div>
+
           <div className="mt-8 max-w-4xl">
             {experience.map((item, i) => (
               <article
@@ -356,12 +427,14 @@ export default function Home() {
                 <p className="pt-1 text-xs text-neutral-600 sm:text-sm">
                   {item.date}
                 </p>
+
                 <div className="relative flex justify-center">
                   <span className="mt-2 size-2.5 rounded-full bg-black" />
                   {i < experience.length - 1 && (
                     <span className="absolute top-5 bottom-0 w-px bg-neutral-200" />
                   )}
                 </div>
+
                 <div className="pb-9">
                   <h2 className="font-semibold">{item.role}</h2>
                   <p className="mt-0.5 text-sm">{item.company}</p>
@@ -372,12 +445,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-          {/* <a
-            className="inline-flex items-center gap-3 text-sm font-medium"
-            href="#full-experience"
-          >
-            View full experience <ArrowRight className="size-4" />
-          </a> */}
         </section>
       </div>
 
@@ -386,46 +453,52 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-start">
             <div>
               <h2 className="max-w-md text-4xl leading-[1.05] font-semibold tracking-tight">
-                Let’s make every release
+                Let&apos;s build something
                 <br />
-                more reliable.
+                useful.
               </h2>
-              <p className="mt-4 text-sm text-neutral-600">
-                I’m open to test automation and quality engineering
-                opportunities.
+              <p className="mt-4 max-w-lg text-sm leading-6 text-neutral-600">
+                I&apos;m open to software engineering, application development,
+                technical systems, and automation opportunities.
               </p>
             </div>
+
             <LinkButton href="https://www.linkedin.com/in/daniel-fernandez-tech/">
-              Let’s connect <ArrowRight className="size-4" />
+              Let&apos;s connect <ArrowRight className="size-4" />
             </LinkButton>
           </div>
+
           <div className="mt-12 flex flex-col-reverse justify-between gap-6 sm:flex-row sm:items-center">
             <p className="text-xs text-neutral-500">
               © 2026 Daniel Fernandez. All rights reserved.
             </p>
+
             <div className="flex gap-7">
               <a
                 href="https://github.com/danielFernandezDj?tab=repositories"
                 aria-label="GitHub"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
                 Github
                 <GitBranch className="size-5" />
               </a>
+
               <a
                 href="https://www.linkedin.com/in/daniel-fernandez-tech/"
                 aria-label="LinkedIn"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
                 Linkedin
                 <BriefcaseBusiness className="size-5" />
               </a>
+
               <a
                 href="mailto:danielfernandez.tech@gmail.com"
                 aria-label="Email"
-                target="_blank"
                 className="flex items-center gap-2"
               >
                 Mail
